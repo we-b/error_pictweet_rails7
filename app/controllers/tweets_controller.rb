@@ -32,7 +32,7 @@ class TweetsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @tweet.comments.includes(:user)
+    @comments = @tweet.comment.includes(:user)
   end
 
   def search
@@ -41,7 +41,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:image, :text).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:image, :test).merge(user_id: current_user.id)
   end
 
   def set_tweet
